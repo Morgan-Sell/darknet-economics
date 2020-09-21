@@ -13,7 +13,7 @@ def plot_null_val_heatmap(df, plot_title):
         df (dataframe) : Dataset to evaluate null values.
         plot_title(str) : Title of heatmap.
     
-    Return
+    Return:
         None
     
     '''
@@ -66,4 +66,5 @@ def stats_summary(arr):
     print('Std. Dev.: ', arr.std())
     print('Max value: ', arr.max())
     print('Min value: ', arr.min())
+    print('# of Obs.: ', len(arr))
     
