@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+import re
 
 def plot_null_val_heatmap(df, plot_title):
     '''
@@ -87,4 +88,21 @@ def replace_empty_cell_with_nan(text):
         revised_text = text
     
     return revised_text
+
+def replace_split_text(text, re_chars, replacement):
+    '''
+    Remove unecessary characters and transformed text into a list. 
     
+    Args:
+        text (str) : String of characters.
+        re_chars (str) : Input in regex format.
+        replacement (str) : String used to replace
+        
+    Return:
+        revised_text (arr) : Cleaned text in a list.
+    
+    '''
+    # regex_conversion = 'r'+
+    revised_text = re.sub(re_chars, replacement, str(text))
+    revised_text = re.split('\s+', revised_text)
+    return revised_text[1:]
