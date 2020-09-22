@@ -49,6 +49,7 @@ def convert_price_to_float(price):
     
     return adj_price
 
+
 def stats_summary(arr):
     '''
     Basic stats summary.
@@ -67,4 +68,23 @@ def stats_summary(arr):
     print('Max value: ', arr.max())
     print('Min value: ', arr.min())
     print('# of Obs.: ', len(arr))
+
+def replace_dash_with_nan(text):
+    '''
+    Use with a dataframe column to replace the cell with dash with NaN.
+    
+    Args:
+        text (str) : String of characters.
+        
+        
+    Return:
+        revised_text (str) : Text stays the same if value is not a dash; otherwise, function returns NaN.
+    
+    '''
+    if text == '-':
+        revised_text = np.NaN
+    else:
+        revised_text = text
+    
+    return revised_text
     
