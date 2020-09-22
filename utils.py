@@ -69,20 +69,20 @@ def stats_summary(arr):
     print('Min value: ', arr.min())
     print('# of Obs.: ', len(arr))
 
-def replace_dash_with_nan(text):
+def replace_empty_cell_with_nan(text):
     '''
-    Use with a dataframe column to replace the cell with dash with NaN.
+    Use with a dataframe column to replace an empty cell with dash with NaN.
     
     Args:
         text (str) : String of characters.
         
-        
     Return:
-        revised_text (str) : Text stays the same if value is not a dash; otherwise, function returns NaN.
+        revised_text (str) : If cell is empty then returns NaN; otherwise, returns intial text.
     
     '''
-    if text == '-':
+    if text == '':
         revised_text = np.NaN
+   
     else:
         revised_text = text
     
