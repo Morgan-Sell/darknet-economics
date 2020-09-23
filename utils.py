@@ -6,20 +6,21 @@ import seaborn as sns
 
 import re
 
-def plot_null_val_heatmap(df, plot_title):
+def plot_null_val_heatmap(df, plot_title, figsize):
     '''
     Identifies null values within a dataframe.
     
     Args:
         df (dataframe) : Dataset to evaluate null values.
         plot_title(str) : Title of heatmap.
+        figsize (tuple) : Plot dimensions
     
     Return:
         None
     
     '''
     
-    plt.figure(figsize=(25, 10))
+    plt.figure(figsize=figsize)
     sns.heatmap(df.isnull(), yticklabels=False, cbar=False, cmap='viridis')
     plt.title(plot_title, fontsize=26, fontweight='bold')
     plt.tight_layout();
@@ -107,7 +108,7 @@ def clean_and_split_text(text, re_chars, replacement):
     revised_text = re.sub(r'\n', '', str(revised_text))
     revised_text = re.sub(re_chars, replacement, revised_text)
     revised_text = re.split('\s+', revised_text)
-    return revised_text[1:]
+    return revised_text
 
 def aggregate_categories_to_master_groups(category):
     '''
