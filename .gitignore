@@ -128,5 +128,8 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Product source data
+# Source data
 data/DreamMarket_master_product.csv
+data/wallstreet.csv
+data/rutor.csv
+data/silkroad.csv
