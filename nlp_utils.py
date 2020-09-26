@@ -52,20 +52,19 @@ def clean_tokenize_lemmatize(text):
     
     return lem_tokens
 
-def print_topics(topics, feature_names, sorting, topics_per_chunk=6, n_words=20):
-    for i in range(0, len(topics), topics_per_chunk):
-        # for each chunk:
-        these_topics = topics[i: i + topics_per_chunk]
-        # maybe we have less than topics_per_chunk left
-        len_this_chunk = len(these_topics)
-        # print topic headers
-        print(("topic {:<8}" * len_this_chunk).format(*these_topics))
-        print(("-------- {0:<5}" * len_this_chunk).format(""))
-        # print top n_words frequent words
-        for i in range(n_words):
-            try:
-                print(("{:<14}" * len_this_chunk).format(
-                    *feature_names[sorting[these_topics, i]]))
-            except:
-                pass
-        print("\n")
+def print_topics(model, count_vectorizer, n_top_words):
+    '''
+   
+    Args:
+    
+        
+    Return:
+    
+        
+    '''
+    
+    words = count_vectorizer.get_feature_names()
+    for topic_idx, topic in enumerate(model.components_):
+        top_words_arr = [words[i] for i in topic.argsort()[:-n_top_words - 1:-1]]
+        print("\nTopic #{}:".format(topic_idx))
+        print(" ".join(top_words_arr))
