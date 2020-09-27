@@ -6,6 +6,8 @@ import seaborn as sns
 
 import re
 
+from datetime import datetime
+
 def plot_null_val_heatmap(df, plot_title, figsize):
     '''
     Identifies null values within a dataframe.
@@ -169,3 +171,56 @@ def select_non_null_value(x, y):
     else:
         res = y
     return res
+
+def fix_postdate_col(dt):
+    '''
+    The last 2 days have errors in the dates.
+    This function resolves the errors.
+    
+    Args:
+        dt (str) : date and time
+    Returns:
+        dt_revised (datetime) : date and time
+    
+    '''
+    dt_split = dt.split(' ')
+    date = dt_split[0]
+    time = dt_split[1]
+    
+    if date == 'Yesterday':
+        date = '2018-11-13'
+    
+    elif date == 'Today':
+        date = '2018-11-14'
+    
+    dt_merged = date + ' ' + time
+    dt_revised = datetime.strptime(dt_merged, '%Y-%m-%d %H:%M:%S')
+    
+    return dt_revised
+
+
+def fix_author_join_date_col(join_date, author_membership, post_date):
+    '''
+    If a date is not in the value, function develops an assumption.
+    
+    Args:
+        join_date (str) : Value for which the author is assumed to have joined.
+        author_memberhsip (str) : Author's Wall Street membership level.
+        post_date (datetime) : Date and time the author posted the corresponding comment.
+        mode_date (str) : Most common date in the relavant data series.
+        
+    Returns:
+        join_date_revised (datetime) : date 
+    '''
+    
+    try:
+        join_date_revised = datetime.strptime(join_date, '%Y-%m-%d')
+
+    except:
+        if author_membership == 'New member':
+            join_date_revised = post_date.date()
+        else:
+            join_date_revised = np.nan
+    
+    return join_date_revised
+    
