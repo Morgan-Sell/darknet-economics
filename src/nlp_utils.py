@@ -111,7 +111,7 @@ def calculate_tfidf_and_fit_lda_model(docs_raw, max_feats, freq_thresh, n_topics
     docs_vectorized = vectorizer.fit_transform(docs_raw)
 
     lda_model = LatentDirichletAllocation(n_components=n_topics, learning_method=learning_method, max_iter=max_iter, random_state=random_state, n_jobs=-1)
-    lda_output = lda.fit_transform(docs_transformed)
+    lda_output = lda_model.fit_transform(docs_vectorized)
     
     return lda_output, lda_model, docs_vectorized, vectorizer
 
