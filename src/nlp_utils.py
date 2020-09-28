@@ -85,13 +85,13 @@ def convert_to_bow_and_fit_lda_model(docs_raw, max_feats, freq_thresh, n_topics,
     
     '''
     
-    vect = CountVectorizer(max_features=max_feats, max_df=freq_thresh)
+    vectorizer = CountVectorizer(max_features=max_feats, max_df=freq_thresh)
     docs_vectorized = vect.fit_transform(docs_raw)
 
-    lda = LatentDirichletAllocation(n_components=n_topics, learning_method=learning_method, max_iter=max_iter, random_state=random_state, n_jobs=-1)
-    doc_topics = lda.fit_transform(docs_vectorized)
+    lda_model = LatentDirichletAllocation(n_components=n_topics, learning_method=learning_method, max_iter=max_iter, random_state=random_state, n_jobs=-1)
+    lda_output = lda_model.fit_transform(docs_vectorized)
     
-    return doc_topics, lda, vect
+    return lda_output, lda_model, docs_vectorized, vectorizer
 
 
 def calculate_tfidf_and_fit_lda_model(docs_raw, max_feats, freq_thresh, n_topics, learning_method, max_iter, random_state=3):
@@ -107,13 +107,13 @@ def calculate_tfidf_and_fit_lda_model(docs_raw, max_feats, freq_thresh, n_topics
     
     '''
     
-    vect = TfidfVectorizer(max_features=max_feats, max_df=freq_thresh)
-    docs_transformed = vect.fit_transform(docs_raw)
+    vectorizer = TfidfVectorizer(max_features=max_feats, max_df=freq_thresh)
+    docs_vectorized = vect.fit_transform(docs_raw)
 
-    lda = LatentDirichletAllocation(n_components=n_topics, learning_method=learning_method, max_iter=max_iter, random_state=random_state, n_jobs=-1)
-    doc_topics = lda.fit_transform(docs_transformed)
+    lda_model = LatentDirichletAllocation(n_components=n_topics, learning_method=learning_method, max_iter=max_iter, random_state=random_state, n_jobs=-1)
+    lda_output = lda.fit_transform(docs_transformed)
     
-    return doc_topics, lda, vect
+    return lda_output, lda_model, docs_vectorized, vectorizer
 
 def print_topics(model, count_vectorizer, n_top_words):
     '''
