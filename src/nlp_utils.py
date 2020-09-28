@@ -24,13 +24,14 @@ def clean_parse_text(text):
     Return:
         
     '''
-    text = BeautifulSoup(text, 'html.parser').get_text()
+    text = BeautifulSoup(text, 'html.parser').get_text().lower()
     text = re.sub(r'\n', ' ', text)
-    cleaned_text = re.sub(r'[^a-zA-Z0-9]', ' ', text)
+    text = re.sub(r'\[?!.,/]', '', text)
+    cleaned_text = re.sub(r'\w*\d\w*', '', text)
     return cleaned_text
 
 
-def clean_tokenize_lemmatize(text):
+def tokenize_lemmatize(text):
     '''
     Removes HTML tags and stopwords.
     Converts words to its base using lemmatization.
@@ -44,10 +45,7 @@ def clean_tokenize_lemmatize(text):
         
     '''
     
-    cleaned_text = clean_parse_text(text)
-    
-    tokens = nltk.word_tokenize(cleaned_text)
-    tokens = [t.lower() for t in tokens]
+    tokens = nltk.word_tokenize(text)
     tokens = [t for t in tokens if t not in stopwords.words('english')]
     
     wordnet_lemma = nltk.WordNetLemmatizer()
@@ -88,10 +86,10 @@ def convert_to_bow_and_fit_lda_model(docs_raw, max_feats, freq_thresh, n_topics,
     '''
     
     vect = CountVectorizer(max_features=max_feats, max_df=freq_thresh)
-    docs_transformed = vect.fit_transform(docs_raw)
+    docs_vectorized = vect.fit_transform(docs_raw)
 
     lda = LatentDirichletAllocation(n_components=n_topics, learning_method=learning_method, max_iter=max_iter, random_state=random_state, n_jobs=-1)
-    doc_topics = lda.fit_transform(docs_transformed)
+    doc_topics = lda.fit_transform(docs_vectorized)
     
     return doc_topics, lda, vect
 
