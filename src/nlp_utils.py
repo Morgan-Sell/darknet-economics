@@ -26,7 +26,7 @@ def clean_parse_text(text):
     '''
     text = BeautifulSoup(text, 'html.parser').get_text().lower()
     text = re.sub(r'\n', ' ', text)
-    text = re.sub(r'\[?!.,/]', '', text)
+    text = re.sub(r"\[?!.,/']*", '', text)
     cleaned_text = re.sub(r'\w*\d\w*', '', text)
     return cleaned_text
 
