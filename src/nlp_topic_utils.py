@@ -1,0 +1,58 @@
+import pandas as pd
+import numpy as np
+
+import re
+from bs4 import BeautifulSoup
+
+import nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import TweetTokenizer
+
+
+def parse_html_remove_url(text):   
+    '''
+    Parse html and removes internet-related vestige.
+    '''
+    
+    text = BeautifulSoup(text, 'html.parser').get_text().lower()
+    text = re.sub(r'\n', ' ', text)
+    text = re.sub(r'http\S+', '', text)
+    return text
+
+def expand_contracted_words(text, contractions_map):
+    '''
+    Expands contracted words
+    '''
+    
+    text_arr = []
+    text = text.split(' ')
+    for t in text:
+        if t in contractions_map:
+            text_arr.append(contractions_map[t])
+        else:
+            text_arr.append(t)
+    
+    revised_text = ' '.join(text_arr)
+    
+    return revised_text
+
+
+def process_text(text, contractions_map, punc, stopwords):
+    '''
+    Prepares text for topic modeling.
+    
+    '''
+    text = parse_html_remove_url(text)
+    text = expand_contracted_words(text, contractions_map)
+    text = re.sub(r'\w*\d\w*', '', text)
+    
+    tokens = TweetTokenizer().tokenize(text)
+    tokens = [t for t in tokens if t not in punc]
+    tokens = [t for t in tokens if t not in stopwords]
+    tokens = [t for t in tokens if len(t) > 1]
+    tokens = [t for t in tokens if t != ' ']
+    
+    wordnet_lemma = nltk.WordNetLemmatizer()
+    lem_tokens = [wordnet_lemma.lemmatize(t) for t in tokens]
+    
+    return lem_tokens

@@ -112,27 +112,7 @@ def clean_and_split_text(text, re_chars, replacement):
     revised_text = re.split('\s+', revised_text)
     return revised_text
 
-def aggregate_categories_to_master_groups(category):
-    '''
-    Summarizes products into master products
-    
-    Args:
-        text (str) : String of characters.
-        re_chars (str) : Input in regex format.
-        replacement (str) : String used to replace
-        
-    Return:
-        revised_text (arr) : Cleaned text in a list.
-    
-    '''
-    illicit_keywords = ['Psychedelics', 'Ecstacy']
-    cannibis_keywords = ['Cannibis',]
-    otc_keywords = ['Opioids', 'Prescription', 'Benzos', 'Opiods']
-    fraud_security_goods_keywords = ['Fraud', 'Security']
-    security_services_keywords = ['Hacking']
 
-    
-    
 def create_product_id(seq, num_ints, year):
     '''
     Creates a product id by merging the initial sequence number or product id with the year the product was offered.
