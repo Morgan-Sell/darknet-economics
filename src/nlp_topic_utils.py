@@ -8,6 +8,8 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import TweetTokenizer
 
+from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
+
 
 def parse_html_remove_url(text):   
     '''
@@ -56,3 +58,28 @@ def process_text(text, contractions_map, punc, stopwords):
     lem_tokens = [wordnet_lemma.lemmatize(t) for t in tokens]
     
     return lem_tokens
+
+
+def bow_vectorizer(docs_raw, min_doc_freq, max_doc_freq, max_feats, ngram_rng):
+    '''
+    
+    Args:
+        
+    Return:
+    
+    '''
+    vectorizer = CountVectorizer(min_df=min_doc_freq, max_df=max_doc_freq, max_features=max_feats, ngram_range=ngram_rng)
+    docs_vectorized = vectorizer.fit_transform(docs_raw)
+    return docs_vectorized, vectorizer
+
+def tfidf_vectorizer(docs_raw, min_doc_freq, max_doc_freq, max_feats, ngram_rng):
+    '''
+    
+    Args:
+        
+    Return:
+    
+    '''
+    vectorizer = TfidfVectorizer(min_df=min_doc_freq, max_df=max_doc_freq, max_features=max_feats, ngram_range=ngram_rng)
+    docs_vectorized = vectorizer.fit_transform(docs_raw)
+    return docs_vectorized, vectorizer
