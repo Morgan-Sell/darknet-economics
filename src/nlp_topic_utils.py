@@ -39,7 +39,7 @@ def expand_contracted_words(text, contractions_map):
     return revised_text
 
 
-def process_text(text, contractions_map, punc, stopwords):
+def process_text(text, contractions_map, punc, stopwords, min_len):
     '''
     Prepares text for topic modeling.
     
@@ -51,7 +51,7 @@ def process_text(text, contractions_map, punc, stopwords):
     tokens = TweetTokenizer().tokenize(text)
     tokens = [t for t in tokens if t not in punc]
     tokens = [t for t in tokens if t not in stopwords]
-    tokens = [t for t in tokens if len(t) > 1]
+    tokens = [t for t in tokens if len(t) > min_len]
     tokens = [t for t in tokens if t != ' ']
     
     wordnet_lemma = nltk.WordNetLemmatizer()
