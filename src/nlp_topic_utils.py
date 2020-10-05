@@ -51,7 +51,7 @@ def process_text(text, contractions_map, punc, stopwords, min_len):
     tokens = TweetTokenizer().tokenize(text)
     tokens = [t for t in tokens if t not in punc]
     tokens = [t for t in tokens if t not in stopwords]
-    tokens = [t for t in tokens if len(t) > min_len]
+    tokens = [t for t in tokens if len(t) >= min_len]
     tokens = [t for t in tokens if t != ' ']
     
     wordnet_lemma = nltk.WordNetLemmatizer()
