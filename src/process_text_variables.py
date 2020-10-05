@@ -127,13 +127,14 @@ contracted_words_dict = {
 }
 
 
-addtl_stop_words = ['still', 'got', 'guy', 'say', 'still', 'thing', 'us', 'will', 'get', 'ok', 'we', 'please', 'would', 'could', 'im', 'also']
+addtl_stop_words = ['still', 'got', 'guy', 'say', 'still', 'thing', 'us', 'will', 'get', 'ok', 'we', 'please', 'would', 'could', 'im', 'also',
+                   'it']
 
 stop_words = stopwords.words("english")#.append(append_to_stopwords)
 stop_words = stop_words + addtl_stop_words
 stop_words_dict = Counter(stop_words)
 
 # List of punctuation
-addtl_punc = ['...']
+addtl_punc = ['...', '___']
 punc = list(set(string.punctuation))
 punc = punc + addtl_punc
