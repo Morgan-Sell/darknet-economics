@@ -21,3 +21,18 @@ def plot_daily_post_freq(series):
                   labels={'date': 'Date', 'count': '# of Posts'})
     fig.update_layout(width=1500, height=600)
     fig.show()
+
+def display_wordcloud(pd_series, max_words, grouped_text):
+    '''
+    Generates wordcloud.
+    '''
+
+    series_as_str = pd_series.astype('str')
+    joined_wordcloud_text = ' '.join(series_as_str)
+
+    wordcloud = WordCloud(background_color='white', max_words=max_words, contour_color='steelblue', collocations=grouped_text)
+    wordcloud.generate(joined_wordcloud_text)
+
+    plt.figure(figsize=(20,7))
+    plt.imshow(wordcloud, interpolation="bilinear")
+    plt.axis('off');
