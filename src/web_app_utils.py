@@ -6,6 +6,7 @@ import seaborn as sns
 
 import plotly.express as px
 import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 
 from wordcloud import WordCloud
 
@@ -36,3 +37,37 @@ def display_wordcloud(pd_series, max_words, grouped_text):
     plt.figure(figsize=(20,7))
     plt.imshow(wordcloud, interpolation="bilinear")
     plt.axis('off');
+    
+def plot_lda_components_distribution(model, vectorizer, model_output, n_topics):
+    '''
+    Visualizes the number of documents by LDA component.
+    
+    '''
+    sorted_components = np.argsort(model.components_, axis=1)[:, ::-1]
+    feat_names = np.array(vectorizer.get_feature_names())
+
+    n_words_per_component = 2
+
+    topics_per_plot = int(n_topics / 2)
+    num_docs_per_topic = np.sum(model_output, axis=0)
+    barh_xlim = np.max(num_docs_per_topic) * 1.1
+    y_arr = np.arange(topics_per_plot)
+
+    topic_names = ['{} {}'.format(i+1, ' '.join(words)) for i, words in enumerate(feat_names[sorted_components[:,:n_words_per_component]])]
+
+    fig = make_subplots(rows=1, cols=2, horizontal_spacing=0.15)
+    
+    # Plot 1
+    n_docs_plot_1 = num_docs_per_topic[:topics_per_plot]
+
+    fig.add_trace(go.Bar(x=n_docs_plot_1[::-1], y=topic_names[:topics_per_plot][::-1], orientation='h'), row=1, col=1)
+    fig.update_xaxes(title_text="# of Documents", row=1, col=1)
+
+    # Plot 2
+    n_docs_plot_2 = num_docs_per_topic[topics_per_plot:]
+
+    fig.add_trace(go.Bar(x=n_docs_plot_2[::-1], y=topic_names[topics_per_plot:][::-1], orientation='h'), row=1, col=2)
+    fig.update_xaxes(title_text="# of Documents", row=1, col=2)
+
+    fig.update_layout(showlegend=False, width=1000, height=800, xaxis=dict(range=[0, barh_xlim]))
+    fig.show();
