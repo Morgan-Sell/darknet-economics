@@ -11,8 +11,12 @@ from plotly.subplots import make_subplots
 from src import web_app_utils
 
 
-DATA_URL = (
+MASTER_DATA_URL = (
     "https://darknet-market-forums-udacity-capstone.notebook.us-west-2.sagemaker.aws/edit/darknet-economics/data/wallstreet_master.csv"
+)
+
+SENTIMENT_DATA_URL = (
+    "https://darknet-market-forums-udacity-capstone.notebook.us-west-2.sagemaker.aws/files/darknet-economics/data/sentiment_analysis_data.csv?_xsrf=xsrf-token-set-by-sagemaker-1602265257458"
 )
 
 
@@ -21,12 +25,12 @@ st.markdown("Topic Modeling and Sentiment Analysis of Wall Street Market Forum")
 
 # prevents calculation from being performed everytime the app is reran.
 @st.cache(persist=True)
-def load_wallstreet_master():
-    data = pd.read_csv(DATA_URL)
+def load_data(data_url):
+    data = pd.read_csv(data_url)
     return data
 
-wallstreet = load_wallstreet_master()
-
+wallstreet = load_data(MASTER_DATA_URL)
+sentiment = load_data(SENTIMENT_DATA_URL)
 
 # Line chart showing the number of daily forum posts.
 st.header('Number of Daily Forum Posts')
@@ -45,3 +49,13 @@ else:
     show_grouped_text = False
     
 web_app_utils.display_wordcloud(wallstreet['cleaned_post'], max_words, show_grouped_text)
+
+
+# Sentment Time-Series Analysis
+
+st.header('Wall Street Forum Sentiment Time-Series Analysis')
+st.markdown("Uses VADER")
+sentiment_option = (label='Which metrics would you like to evaulate?',
+                   options=('Lifetime Avg', 'Lifetime Median', 'Lifetime Innerquartile Range', 'Daily Avg',
+                    'Daily Median', 'Daily Min/Max'))
+st.line_chart(sentiment[sentiment_option])
