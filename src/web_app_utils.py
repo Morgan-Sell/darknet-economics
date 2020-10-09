@@ -23,6 +23,7 @@ def plot_daily_post_freq(series):
     fig.update_layout(width=1500, height=600)
     fig.show()
 
+    
 def display_wordcloud(pd_series, max_words, grouped_text):
     '''
     Generates wordcloud.
@@ -37,6 +38,7 @@ def display_wordcloud(pd_series, max_words, grouped_text):
     plt.figure(figsize=(20,7))
     plt.imshow(wordcloud, interpolation="bilinear")
     plt.axis('off');
+    
     
 def plot_lda_components_distribution(model, vectorizer, model_output, n_topics):
     '''
