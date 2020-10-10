@@ -55,7 +55,7 @@ web_app_utils.display_wordcloud(wallstreet['cleaned_post'], max_words, show_grou
 
 st.header('Wall Street Forum Sentiment Time-Series Analysis')
 st.markdown("Uses VADER")
-sentiment_option = (label='Which metrics would you like to evaulate?',
+sentiment_option = st.multiselect(label='Which metrics would you like to evaulate?',
                    options=('Lifetime Avg', 'Lifetime Median', 'Lifetime Innerquartile Range', 'Daily Avg',
                     'Daily Median', 'Daily Min/Max'))
 st.line_chart(sentiment[sentiment_option])
