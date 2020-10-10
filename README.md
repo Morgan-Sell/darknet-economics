@@ -43,7 +43,7 @@ htmlwidgets: TRUE
 <h3> Wall Street Market Daily Post Frequency </h3>
 
 
-{% include img/daily_posts.html %}
+{% include image/daily_posts.html %}
 
 
 

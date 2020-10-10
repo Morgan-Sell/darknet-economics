@@ -8,6 +8,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import plotly.io as pio
+import plotly
 
 from wordcloud import WordCloud
 
@@ -26,6 +27,7 @@ def plot_daily_post_freq(series):
     file_path = 'C:/Users/morga/OneDrive/Documents/22_Udacity_ML_Nanodegree/darknet-economics/img/daily_posts.html'
     pio.write_html(fig, file=file_path, auto_open=True)
     
+    plotly.offline.plot(fig, include_plotlyjs=False, output_type='div')
     fig.show()
 
 
