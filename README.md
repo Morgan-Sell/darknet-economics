@@ -37,4 +37,17 @@ htmlwidgets: TRUE
     The line chart below shows the daily number of posts during the life of the dataset. We see a significant uptick in October 2017. Given lack of transparency of the darknet, we can only speculate as to what caused this increase in participation. 
 </p>
 <p>
-    In July 2018, AlphaBay, which was one of the largest market at the time, was shut down by U.S., Canadian and Thailand law enforcement. It's possible that AlphaBay users/vendors migrated to Wall Street. The lag can partially be explained by the vetting process required of vendors and users to participate in
+    In July 2018, AlphaBay, which was one of the largest market at the time, was shut down by U.S., Canadian and Thailand law enforcement. It's possible that AlphaBay users/vendors migrated to Wall Street. The lag can partially be explained by the application process required for vendors. Markets may demand that vendors prove reputation or provide cash deposits via cryptocurrencies.
+<p>
+
+<h3> Wall Street Market Daily Post Frequency </h3>
+
+
+{% include img/daily_posts.html %}
+
+
+
+
+
+<p>
+    As previously mentioned, WSM is a vibrant marketplace comprised of prosperous entrepreneurs. Consequently, the most frequently used 

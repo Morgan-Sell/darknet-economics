@@ -7,6 +7,7 @@ import seaborn as sns
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+import plotly.io as pio
 
 from wordcloud import WordCloud
 
@@ -21,8 +22,12 @@ def plot_daily_post_freq(series):
     fig = px.line(data_frame=daily_post_freq, x='date', y='count',
                   labels={'date': 'Date', 'count': '# of Posts'})
     fig.update_layout(width=1500, height=600)
+    
+    file_path = 'C:/Users/morga/OneDrive/Documents/22_Udacity_ML_Nanodegree/darknet-economics/img/daily_posts.html'
+    pio.write_html(fig, file=file_path, auto_open=True)
+    
     fig.show()
-    fig.write_image("../img/daily_posts.jpg")
+
 
     
 def display_wordcloud(pd_series, max_words, grouped_text):
