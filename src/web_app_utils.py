@@ -22,6 +22,7 @@ def plot_daily_post_freq(series):
                   labels={'date': 'Date', 'count': '# of Posts'})
     fig.update_layout(width=1500, height=600)
     fig.show()
+    fig.write_image("../img/daily_posts.jpg")
 
     
 def display_wordcloud(pd_series, max_words, grouped_text):
