@@ -27,7 +27,12 @@ def plot_distortion_inertia(k_rng, distortions, inertias):
     fig.update_yaxes(title_text="Sum of Squared Errors", row=1, col=2)
 
     fig.update_layout(showlegend=False)
+    for i in fig['layout']['annotations']:
+        i['font'] = dict(size=26)
 
+    file_path = 'C:/Users/morga/OneDrive/Documents/22_Udacity_ML_Nanodegree/darknet-economics/img/plot_distortion_inertia.jpg'
+    fig.write_image(file_path)
+    
     fig.show();
     
-    fig.to_file('img/kmeans_distortion_inertia.jpg')
+    
