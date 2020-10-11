@@ -50,4 +50,17 @@ htmlwidgets: TRUE
 
 
 <p>
-    As previously mentioned, WSM is a vibrant marketplace comprised of prosperous entrepreneurs. Consequently, the most frequently used 
+    As previously mentioned, WSM is a vibrant marketplace comprised of prosperous entrepreneurs. Consequently, the most frequently used words are nearly identical to the words - e.g. vendor, market, bank, and account - that one would expect to be popular in a legal marketplace. 
+</p>
+<h3> Wall Street Market Forum Word Frequency</h3>
+<img src="img/wordcloud.jpg" alt="Wordcloud" height="300" width="800">
+
+
+<h2> Data Processing </h2>
+<p>
+    The forum posts were in html which required cleaning. Additionally, the majority of the writing was informal and serial numbers and websites were referenced throughout the documents. We removed
+
+
+<h2> Topic Modeling </h2>
+
+<img src="img/plot_distortion_inertia.jpg" alt="Elbow Charts" height="350" width="1000">

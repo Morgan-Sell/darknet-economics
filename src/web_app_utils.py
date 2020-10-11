@@ -47,6 +47,8 @@ def display_wordcloud(pd_series, max_words, grouped_text):
     plt.imshow(wordcloud, interpolation="bilinear")
     plt.axis('off');
     
+    wordcloud.to_file('img/wordcloud.jpg')
+    
     
 def plot_lda_components_distribution(model, vectorizer, model_output, n_topics):
     '''
