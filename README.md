@@ -94,7 +94,7 @@
 <p>
     The kmeans model resulted in a silhouette score of <b>0.06</b> in contrast to a score of <b>-0.14</b> for the DBSCAN. In conclusion, neither of these model performed well. KMeans silhoulette score close to zero represents that, on average, the clusters are not clearly divided. This reconciles with the outcomes from the LDA models.
 </p>
-<h3> Conclusion </h3>
+<h2> Conclusion </h2>
 <p>
     Unfortunately, neither LDA nor KMeans clustering provided were helpful in organizing the WSM forum posts into clear and distinct groups that allow us to better comprehend the operation and/or primary topics of the darkweb market participants. In the next iteration, I will examine how the removal of generic and ecommerce terms, e.g. vendor, people and sell - affects the outcome. I suspect that omitting these words should allow for the models to more cogently categorize the documents.
 </p>
@@ -104,11 +104,11 @@
 <p>
     It seems that from the three primary topic modeling methods - LDA, KMeans, and NMF - that LDA is best suited for this project. Therefore, in this project's next iteration, I will leverage the Gensim package to optimizing the LDA model.
 <p>
-<h3>Source</h3>
+<h2>Source</h2>
 <p>
     The Wall Street Market forum dataset was sourced from AZSecure Data, a consortium comprised of faculty from University of Arizona, Drexel University, University of Virginia, University of Texas at Dallas, and University of Utah.
 </p>
-<h3>Packages</h3>
+<h2>Packages</h2>
 <ul>
     <li>Numpy</li>
     <li>Pandas</li>
