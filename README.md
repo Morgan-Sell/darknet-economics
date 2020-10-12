@@ -21,7 +21,7 @@
 <p>
     After authorities shut down WSM, the National Science Foundation (NSF) the Data Infrastructure Building project which was led by the University of Arizona’s Artificial Intelligence Lab. The corpus is comprised of more than 42,000 posts written by over 5,500 unique members. The posts were published between October 2016 and November 2018.
 </p>
-<h2> Exploring Parts Unkown </h2>
+<h2> Exploring Parts Unknown </h2>
 <p>
     The line chart below shows the daily number of posts during the life of the dataset. The visualization displays a significant uptick in October 2017. Given lack of transparency of the darknet, I can only speculate what triggered the increase in participation. 
 </p>
