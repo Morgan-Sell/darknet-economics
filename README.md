@@ -1,6 +1,4 @@
 
-htmlwidgets: TRUE
-
 <h1> What's Trending in the Darknet?</h1>
 <h3> Wall Street Market Topic Modeling and Sentiment Analysis </h3>
 <img src="img/darknet.jpg" alt="Darknet" height="300" width="800">
@@ -64,12 +62,21 @@ htmlwidgets: TRUE
 <p>
     I selected 20 components, an arbitrary value that was primarily elected for ease of visualization. In future revisions, I will identify the optimal value. I also applied two LDA methods. The methods differed in how I transformed/vectorized the documents into numerical values. I used BoW and Tf-Idf vectorization. The charts below demonstrate that BoW was more sucessful in differing the topics within the
 </p>
-
 <img src="img/lda_viz.jpg" alt="LDA Visualization">
-
 <p>
     To assess the two methods, I used perplexity. Perplexity has limitations - optimizing for perplexity may not yield human interpretable topics. Coherence score is most likely better suited for this task. In this project's second iteration, I will use Gensim instead of Sklearn to implement the LDA model. 
 <h3> 
-<center><img src="img/lda_model_metrics.png" alt="LDA Metrics" height="120" width = "400" ></center>
+<center><img src="img/lda_model_metrics.png" alt="LDA Metrics" height="90" width = "400" ></center>
 <h3> K-Means Clustering </h3>
+<p>
+    I also applied k-means to obtain a different perspective. I must note that k-means does have limitations. For example, the method defines each cluster by its center; to do so, the model assumes that clusters are convex, distinct, and approximately equal in size. 
+</p>
+<p>
+    K-means' most important hyperparamter is the number of clusters. This value is somehwat arbitrary. To identify the optimal value, I calculated the sum and average of the squared errors (intra-cluster variances) - distance among the clusters' centroids and the corresponding datapoints - to see the number of clusters that minimizes the error while being cognizant of overfitting.
+</p>
 <img src="img/plot_distortion_inertia.jpg" alt="Elbow Charts" height="350" width="1000">
+</p>
+    Based on the distortion and inertia plots, which are commonly referred to as "Elbow Graph", I selected 65 clusters. The excerpt below are four selected clusters and their respective ten most common terms. I created the "Suggested Topics" based on the clusters' terms.
+</p>
+<h4> Selected Clusters - Top Ten Terms</h4>
+<img src="img/kmeans_topics.jpg" alt="KMeans Topics">
