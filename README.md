@@ -79,4 +79,10 @@
     Based on the distortion and inertia plots, which are commonly referred to as "Elbow Graph", I selected 65 clusters. The excerpt below are four selected clusters and their respective ten most common terms. I created the "Suggested Topics" based on the clusters' terms.
 </p>
 <h4> Selected Clusters - Top Ten Terms</h4>
-<img src="img/kmeans_topics.jpg" alt="KMeans Topics">
+<img src="img/kmeans_topics.jpg" alt="KMeans Topics", height="200" width = "600">
+<p>
+    To assess the kmeans model performance, I used silhouette score. The kmeans' silhouette score on its own does not provide insight; I needed a benchmerk. Consequently, I applied another clustering method referred to as DBSCAN. DBSCAN is an interesting comparison because, unlike kmeans, the algorithm does **not** assume that the clusters are of convex shapes **nor** require a priori, i.e. a pre-defined number of clusters.
+</p>
+<p>
+    DBSCAN two principle hyperparameters are epsilon and min_samples. min_samples is a threshold to determine which samples can qualify as a **core samples**. I will omit a deep explanation of these hyperparameters as DBSCAN's sole purpose in this project is to establish a baseline silhouette score.
+</p>
