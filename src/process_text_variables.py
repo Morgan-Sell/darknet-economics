@@ -127,9 +127,12 @@ contracted_words_dict = {
 }
 
 
-addtl_stop_words = ['still', 'got', 'guy', 'say', 'still', 'thing', 'us', 'will', 'get', 'ok', 'we', 'please', 'would', 'could', 'im', 'also',
-                   'it']
 
+stop_words_incl_in_sentiment = ['please', 'thank', 'hi', 'lol']
+stop_words_incl_in_sentiment_dict = Counter(stop_words_incl_in_sentiment)
+
+addtl_stop_words = ['still', 'got', 'guy', 'say', 'still', 'thing', 'us', 'will', 'get', 'ok', 'we', 'would', 'could', 'im', 'also', 're', 'thing', 'stuff', 'one',
+                   'it']
 stop_words = stopwords.words("english")#.append(append_to_stopwords)
 stop_words = stop_words + addtl_stop_words
 stop_words_dict = Counter(stop_words)
