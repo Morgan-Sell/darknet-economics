@@ -16,10 +16,6 @@ from sklearn.decomposition import LatentDirichletAllocation
 
 
 
-
-
-
-
 def convert_to_bow_and_fit_lda_model(docs_raw, max_feats, freq_thresh, n_topics, learning_method, max_iter, random_state=3):
     '''
     Convert text into a vector representation, i.e. Bag of Words.
